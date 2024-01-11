@@ -10,6 +10,12 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@formkit/nuxt": "^1.4.0",
+    "@nuxtjs/google-fonts": "^3.1.3",
+    "@nuxtjs/tailwindcss": "^6.10.4",
+    "@tailwindcss/forms": "^0.5.7",
+    "axios": "^1.6.5",
+    "laravel-vue-pagination": "^4.1.3",
     "nuxt": "^3.9.0",
     "vue": "^3.4.6",
     "vue-router": "^4.2.5"

@@ -22,4 +22,13 @@ export default defineNuxtConfig({
     // Experimental support for auto loading (see note):
     autoImport: true
   },
+  runtimeConfig: {
+    public: {
+      apiBase: "http://localhost:8000",
+    },
+  },
+  // ssr: false,
+  routeRules: {
+    "/**": { ssr: false },
+  },
 })

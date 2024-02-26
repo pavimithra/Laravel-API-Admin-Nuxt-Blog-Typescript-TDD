@@ -1,17 +1,17 @@
 <script setup lang="ts">
 definePageMeta({
-    middleware: ["auth"],
-    layout: false,
+  middleware: ["auth"],
+  layout: false,
 });
 useHead({
-    title: 'Categories',
-})
+  title: "Categories",
+});
 </script>
 
 <template>
-    <NuxtLayout name="admin">
-        <template #header>Categories</template>
+  <NuxtLayout name="admin">
+    <template #header>Categories</template>
 
-        <p>Categories Index</p>
-    </NuxtLayout>
+    <p>Categories Index</p>
+  </NuxtLayout>
 </template>

@@ -1,18 +1,18 @@
 <script setup lang="ts">
 definePageMeta({
-    middleware: ["auth"],
-    layout: false,
+  middleware: ["auth"],
+  layout: false,
 });
 
 useHead({
-    title: 'Yearly Report',
-})
+  title: "Yearly Report",
+});
 </script>
 
 <template>
-    <NuxtLayout name="admin">
-        <template #header>Yearly Report</template>
+  <NuxtLayout name="admin">
+    <template #header>Yearly Report</template>
 
-        <p>Yearly Reports Index</p>
-    </NuxtLayout>
+    <p>Yearly Reports Index</p>
+  </NuxtLayout>
 </template>

@@ -6,6 +6,7 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "@formkit/nuxt",
     "@pinia/nuxt",
+    "@nuxt/test-utils/module",
   ],
   googleFonts: {
     display: "swap",

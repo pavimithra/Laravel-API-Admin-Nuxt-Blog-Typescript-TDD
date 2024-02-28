@@ -18,6 +18,11 @@ const store = useAuthStore();
 async function userLogin(payload: LoginPayload, node?: FormKitNode) {
   try {
     await store.login(payload);
+    const route = useRoute();
+    const redirectPath: string = route.redirectedFrom?.fullPath
+      ? `${route.redirectedFrom?.fullPath}`
+      : "/admin";
+    await navigateTo(redirectPath);
   } catch (err) {
     handleValidationErrors(err, node);
   }

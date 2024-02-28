@@ -18,6 +18,7 @@ const store = useAuthStore();
 async function userRegister(payload: RegisterPayload, node?: FormKitNode) {
   try {
     await store.register(payload);
+    await navigateTo("/admin");
   } catch (err) {
     handleValidationErrors(err, node);
   }

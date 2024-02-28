@@ -11,6 +11,9 @@ useHead({
 });
 const { logout } = useAuthStore();
 logout();
+await navigateTo("/admin/login", {
+  replace: true,
+});
 </script>
 
 <template>

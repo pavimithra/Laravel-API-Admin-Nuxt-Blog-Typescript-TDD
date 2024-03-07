@@ -1,4 +1,4 @@
-// stores/counter.spec.ts
+// stores/auth.spec.js
 import { setActivePinia, createPinia } from "pinia";
 import { useAuthStore } from "@/stores/auth";
 import axios from "axios";
@@ -20,14 +20,21 @@ describe("Auth Store", () => {
 
     // login test data
     const testLoginPayload = { username: "testUser", password: "testPassword" };
+    const userData = {
+      id: 1,
+      username: "testUser",
+      email: "testuser@gmail.com",
+    };
 
     vi.spyOn(axios, "post").mockResolvedValueOnce();
+    vi.spyOn(axios, "get").mockResolvedValueOnce({ data: userData });
 
     // Call login function
     await authStore.login(testLoginPayload);
 
     expect(axios.post).toHaveBeenCalledTimes(1);
     expect(axios.post).toHaveBeenCalledWith("/login", testLoginPayload);
+    expect(authStore.user).toEqual(userData);
     expect(authStore.isAuthenticated).toBe(true);
   });
 
@@ -58,14 +65,22 @@ describe("Auth Store", () => {
       password: "testPassword",
     };
 
+    const userData = {
+      id: 1,
+      username: "testUser",
+      email: "testuser@gmail.com",
+    };
+
     // Mock axios.post to resolve
     vi.spyOn(axios, "post").mockResolvedValueOnce();
+    vi.spyOn(axios, "get").mockResolvedValueOnce({ data: userData });
 
     // Call register function
     await authStore.register(testRegisterPayload);
 
     expect(axios.post).toHaveBeenCalledTimes(1);
     expect(axios.post).toHaveBeenCalledWith("/register", testRegisterPayload);
+    expect(authStore.user).toEqual(userData);
     expect(authStore.isAuthenticated).toBe(true);
   });
 

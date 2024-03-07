@@ -6,7 +6,7 @@ import { useCategoryStore } from "@/stores/categories";
 import CategoryIndex from "../admin/categories/index.vue";
 import formKitConfig from "@/formkit.config";
 
-describe("Auth Store", async () => {
+describe("Category CRUD", async () => {
   const wrapper = mount(CategoryIndex, {
     global: {
       plugins: [createTestingPinia(), formKitConfig],

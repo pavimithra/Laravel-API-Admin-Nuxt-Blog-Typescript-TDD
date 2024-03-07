@@ -1,7 +1,8 @@
 <script setup lang="ts">
 definePageMeta({
   middleware: ["auth"],
-  layout: false,
+  layout: "admin",
+  title: "Posts",
 });
 useHead({
   title: "Posts",
@@ -9,9 +10,5 @@ useHead({
 </script>
 
 <template>
-  <NuxtLayout name="admin">
-    <template #header>Posts</template>
-
-    <p>Posts Index</p>
-  </NuxtLayout>
+  <p>Posts Index</p>
 </template>

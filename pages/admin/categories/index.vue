@@ -7,7 +7,8 @@ import { UserCircleIcon } from "@heroicons/vue/20/solid";
 
 definePageMeta({
   middleware: ["auth"],
-  layout: false,
+  layout: "admin",
+  title: "Categories",
 });
 useHead({
   title: "Categories",
@@ -21,6 +22,7 @@ await store.fetchCategories();
 
 function clearForm() {
   reset("storeCategory");
+  categoryPreview.value = "";
 }
 
 async function createCategory(payload: CategoryPayload, node?: FormKitNode) {
@@ -65,87 +67,78 @@ loading.value = false;
 </script>
 
 <template>
-  <NuxtLayout name="admin">
-    <template #header>Categories</template>
-    <Suspense>
-      <!-- The part of the component tree containing asynchronous operations -->
-      <div class="w-full">
-        <ul
-          role="list"
-          class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
-        >
-          <AdminCategoryItem
-            v-for="(category, categoryIndex) in store.categories"
-            :key="category.id"
-            :category="category"
-            :categoryIndex="categoryIndex"
-            @update-category="updateCategory"
-          />
+  <div class="w-full">
+    <ul
+      role="list"
+      class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+    >
+      <AdminCategoryItem
+        v-for="(category, categoryIndex) in store.categories"
+        :key="category.id"
+        :category="category"
+        :categoryIndex="categoryIndex"
+        @update-category="updateCategory"
+      />
 
-          <li
-            class="col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow"
+      <li
+        class="col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow"
+      >
+        <div class="flex flex-1 flex-col px-6 pt-6 pb-1">
+          <FormKit
+            type="form"
+            id="storeCategory"
+            data-testId="storeCategory"
+            :actions="false"
+            #default="{ state: { valid } }"
+            @submit="createCategory"
           >
-            <div class="flex flex-1 flex-col px-6 pt-6 pb-1">
-              <FormKit
-                type="form"
-                id="storeCategory"
-                data-testId="store-category"
-                :actions="false"
-                #default="{ state: { valid } }"
-                @submit="createCategory"
-              >
+            <FormKit
+              type="text"
+              name="name"
+              id="name"
+              data-testId="category-name"
+              placeholder="Category Name"
+              validation="required"
+            />
+            <FormKit
+              type="text"
+              name="slug"
+              id="slug"
+              data-testId="category-slug"
+              placeholder="Category Slug"
+              validation="required"
+            />
+            <div class="mb-4 flex items-center gap-x-3 justify-between">
+              <div v-if="categoryPreview">
+                <img :src="categoryPreview" class="h-24 w-24 rounded-full" />
+              </div>
+              <UserCircleIcon
+                v-else
+                class="h-24 w-24 text-gray-300"
+                aria-hidden="true"
+              />
+              <div class="w-2/5 flex items-center mt-3">
                 <FormKit
-                  type="text"
-                  name="name"
-                  id="name"
-                  data-testId="category-name"
-                  placeholder="Category Name"
+                  type="file"
+                  name="image"
+                  id="image"
+                  data-testId="category-image"
+                  accept=".jpg,.png,.jpeg"
                   validation="required"
+                  @change="categoryImagePreview"
                 />
-                <FormKit
-                  type="text"
-                  name="slug"
-                  id="slug"
-                  data-testId="category-slug"
-                  placeholder="Category Slug"
-                  validation="required"
-                />
-                <div class="mb-4 flex items-center gap-x-3 justify-between">
-                  <div v-if="categoryPreview">
-                    <img
-                      :src="categoryPreview"
-                      class="h-24 w-24 rounded-full"
-                    />
-                  </div>
-                  <UserCircleIcon
-                    v-else
-                    class="h-24 w-24 text-gray-300"
-                    aria-hidden="true"
-                  />
-                  <div class="w-2/5 flex items-center mt-3">
-                    <FormKit
-                      type="file"
-                      name="image"
-                      id="image"
-                      data-testId="category-image"
-                      accept=".jpg,.png,.jpeg"
-                      validation="required"
-                      @change="categoryImagePreview"
-                    />
-                  </div>
-                </div>
-
-                <div class="flex gap-2">
-                  <FormKit type="button" @click="clearForm"> Cancel </FormKit>
-                  <FormKit type="submit" :disabled="!valid" />
-                </div>
-              </FormKit>
+              </div>
             </div>
-          </li>
-        </ul>
-      </div>
-    </Suspense>
 
-    <LazyAdminCategoryUpdate v-if="showUpdateCategory" @close="clearCategory" />
-  </NuxtLayout>
+            <div class="flex gap-2">
+              <FormKit type="button" @click="clearForm"> Cancel </FormKit>
+              <FormKit type="submit" :disabled="!valid" />
+            </div>
+          </FormKit>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <LazyAdminCategoryUpdate v-if="showUpdateCategory" @close="clearCategory" />
 </template>

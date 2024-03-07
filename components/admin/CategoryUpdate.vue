@@ -10,6 +10,7 @@ const store = useCategoryStore();
 async function categoryUpdate(payload: CategoryPayload, node?: FormKitNode) {
   try {
     await store.updateCategory(payload);
+    emit("close");
   } catch (err) {
     handleValidationErrors(err, node);
   }

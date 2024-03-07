@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import { XMarkIcon } from "@heroicons/vue/24/outline";
 
+const route = useRoute();
+const title = computed(() =>
+  route.meta.title ? `${route.meta.title}` : "Dashboard"
+);
+
 useHead({
   htmlAttrs: {
     class: "h-full bg-white",
@@ -56,7 +61,9 @@ const sidebarOpen = ref(false);
         <header
           class="text-2xl lg:text-4xl text-gray-900 font-dance font-bold bg-gray-200 px-4 py-3 lg:py-4 xl:px-8 uppercase"
         >
-          <slot name="header"> Dashboard </slot>
+          <slot name="header">
+            {{ title }}
+          </slot>
         </header>
 
         <div class="px-4 sm:px-6 lg:px-8 py-5">

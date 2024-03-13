@@ -3,7 +3,7 @@ import { createTestingPinia } from "@pinia/testing";
 import { mount, flushPromises } from "@vue/test-utils";
 import CategoryItem from "../admin/CategoryItem.vue";
 import formKitConfig from "@/formkit.config";
- 
+
 describe("Category Item Component", () => {
   const wrapper = mount(CategoryItem, {
     global: {
@@ -41,7 +41,7 @@ describe("Category Item Component", () => {
     ).toBe("image.jpg");
   });
 
-  test("displays the update and delete formkit button and emits an emit @update", async () => {
+  test("displays the update and delete formkit button and emits an emit update", async () => {
     await flushPromises();
 
     const updateButton = wrapper.find('[data-testId="update-category"]');

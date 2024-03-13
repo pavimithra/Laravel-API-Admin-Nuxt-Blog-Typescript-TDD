@@ -1,0 +1,78 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Posts DataTable Testing with Sample Data for 2 Pages > Displays Correct no of Datas and displays Page Details inside the tbody 1`] = `
+"<div class="relative">
+  <!--v-if-->
+  <table class="min-w-full table-fixed divide-y divide-gray-300 border border-gray-200 shadow-md">
+    <thead class="bg-gray-200">
+      <tr>
+        <th scope="col" class="relative px-7 sm:w-12 sm:px-6"><input type="checkbox" data-testid="checkbox-all" class="absolute left-4 top-1/2 -mt-2 h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-600"></th>
+        <th scope="col" class="min-w-[12rem] py-3.5 pr-3 text-left text-sm font-semibold text-gray-900"> Title </th>
+        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"> Content </th>
+        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"> Status </th>
+        <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-3"><span class="sr-only">Edit</span></th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-200 bg-white">
+      <tr class="">
+        <td class="relative px-7 sm:w-12 sm:px-6">
+          <!--v-if--><input type="checkbox" data-testid="checkbox-1" class="absolute left-4 top-1/2 -mt-2 h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-600" value="1">
+        </td>
+        <td class="whitespace-nowrap py-4 pr-3 text-sm font-medium text-gray-900">
+          <div class="flex items-center">
+            <div class="h-11 w-11 flex-shrink-0"><img class="h-11 w-11 rounded-full" src="http://localhost:8000/storage/images/category/fi8alXPXpkxiXGsAngXxGpDmqQJfj2RX30mWEphA.jpg" alt=""></div>
+            <div class="ml-4">
+              <div class="font-medium text-gray-900">Post 1</div>
+              <div class="mt-1 text-gray-500">post-1</div>
+            </div>
+          </div>
+        </td>
+        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Post Description 1</td>
+        <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500"><span class="inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset bg-yellow-50 text-yellow-700 ring-yellow-600/20">draft</span></td>
+        <td class="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-3"><a href="#" class="text-indigo-600 hover:text-indigo-900"> Edit<span class="sr-only">, Post 1</span></a></td>
+      </tr>
+      <tr class="">
+        <td class="relative px-7 sm:w-12 sm:px-6">
+          <!--v-if--><input type="checkbox" data-testid="checkbox-2" class="absolute left-4 top-1/2 -mt-2 h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-600" value="2">
+        </td>
+        <td class="whitespace-nowrap py-4 pr-3 text-sm font-medium text-gray-900">
+          <div class="flex items-center">
+            <div class="h-11 w-11 flex-shrink-0"><img class="h-11 w-11 rounded-full" src="http://localhost:8000/storage/images/category/fi8alXPXpkxiXGsAngXxGpDmqQJfj2RX30mWEphA.jpg" alt=""></div>
+            <div class="ml-4">
+              <div class="font-medium text-gray-900">Post 2</div>
+              <div class="mt-1 text-gray-500">post-2</div>
+            </div>
+          </div>
+        </td>
+        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Post Description 2</td>
+        <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500"><span class="inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset bg-yellow-50 text-yellow-700 ring-yellow-600/20">draft</span></td>
+        <td class="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-3"><a href="#" class="text-indigo-600 hover:text-indigo-900"> Edit<span class="sr-only">, Post 2</span></a></td>
+      </tr>
+      <tr class="">
+        <td class="relative px-7 sm:w-12 sm:px-6">
+          <!--v-if--><input type="checkbox" data-testid="checkbox-3" class="absolute left-4 top-1/2 -mt-2 h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-600" value="3">
+        </td>
+        <td class="whitespace-nowrap py-4 pr-3 text-sm font-medium text-gray-900">
+          <div class="flex items-center">
+            <div class="h-11 w-11 flex-shrink-0"><img class="h-11 w-11 rounded-full" src="http://localhost:8000/storage/images/category/fi8alXPXpkxiXGsAngXxGpDmqQJfj2RX30mWEphA.jpg" alt=""></div>
+            <div class="ml-4">
+              <div class="font-medium text-gray-900">Post 3</div>
+              <div class="mt-1 text-gray-500">post-3</div>
+            </div>
+          </div>
+        </td>
+        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Post Description 3</td>
+        <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500"><span class="inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset bg-yellow-50 text-yellow-700 ring-yellow-600/20">draft</span></td>
+        <td class="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-3"><a href="#" class="text-indigo-600 hover:text-indigo-900"> Edit<span class="sr-only">, Post 3</span></a></td>
+      </tr>
+      <!--v-if-->
+      <tr class="text-center font-bold">
+        <td colspan="2" class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 text-left"> Page <b>1</b> of <b>1</b></td>
+        <td colspan="3" class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 text-right">
+          <!---->
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>"
+`;

@@ -5,7 +5,7 @@ import { useCategoryStore } from "@/stores/categories";
 import { vi } from "vitest";
 import axios from "axios";
 
-describe("Auth Store", () => {
+describe("Category Store", () => {
   beforeEach(() => {
     setActivePinia(createPinia());
   });

@@ -17,8 +17,8 @@ export default defineNuxtPlugin(async (nuxtApp) => {
         [401, 419].includes(error.response.status) &&
         !error.request.responseURL.endsWith("/api/user")
       ) {
-        const { logout } = useAuthStore();
-        logout();
+        const store = useAuthStore();
+        store.logout();
       } else {
         return Promise.reject(error);
       }

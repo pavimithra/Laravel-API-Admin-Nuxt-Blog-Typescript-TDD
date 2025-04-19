@@ -3,7 +3,9 @@ export interface Post {
   title: string;
   slug: string;
   description: string;
-  content: string;
+  content?: string;
+  category_id?: string;
+  category_name?: string;
   image: string;
   status: "draft" | "published"; // status can only be 'draft' or 'published'
 }
@@ -42,7 +44,12 @@ interface ImageFile {
 export interface PostPayload {
   title: string;
   slug: string;
+  description: string;
   content: string;
   image?: ImageFile[];
-  status: "draft" | "published"; // status can only be 'draft' or 'published'
+  category_id: string;
+}
+
+export interface Categories {
+  [categoryId: number]: string;
 }

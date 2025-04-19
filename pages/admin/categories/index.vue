@@ -48,6 +48,8 @@ function categoryImagePreview(event: Event): void {
       }
     };
     reader.readAsDataURL(file);
+  } else {
+    categoryPreview.value = "";
   }
 }
 

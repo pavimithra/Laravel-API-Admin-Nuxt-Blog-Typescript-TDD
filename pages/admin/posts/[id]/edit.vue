@@ -1,31 +1,38 @@
 <script setup lang="ts">
-import { UserCircleIcon } from "@heroicons/vue/20/solid";
-import { reset } from "@formkit/core";
-import type { FormKitNode } from "@formkit/core";
-import type { PostPayload, Categories } from "@/types";
+import type { Post, PostPayload, Categories } from "@/types";
 import { usePostStore } from "@/stores/posts";
+import type { FormKitNode } from "@formkit/core";
+import { UserCircleIcon } from "@heroicons/vue/20/solid";
 
 definePageMeta({
   middleware: ["auth"],
   layout: "admin",
-  title: "Create Post",
+  title: "Edit Post",
 });
 
 useHead({
-  title: "Create Post",
+  title: "Edit Post",
 });
 
 const store = usePostStore();
 
 store.isLoading = true;
 
+const route = useRoute();
+
+const { id } = route.params;
+
+const post: Ref<Post | null> = ref(null);
+
 const categories: Ref<Categories | null> = ref(null);
 
-onMounted(async () => {
-  categories.value = await store.fetchCategories();
-});
-
 const imagePreview = ref("");
+
+onMounted(async () => {
+  post.value = await store.showPost(Number(id));
+  categories.value = await store.fetchCategories();
+  if (post.value?.image) imagePreview.value = post.value.image;
+});
 
 function postImagePreview(event: Event): void {
   const inputElement = event.target as HTMLInputElement;
@@ -43,16 +50,9 @@ function postImagePreview(event: Event): void {
   }
 }
 
-function clearForm() {
-  reset("createPost");
-  imagePreview.value = "";
-}
-
-async function createPost(payload: PostPayload, node?: FormKitNode) {
+async function editPost(payload: PostPayload, node?: FormKitNode) {
   try {
-    await store.storePost(payload);
-    reset("createPost");
-    imagePreview.value = "";
+    await store.updatePost(Number(id), payload);
     await navigateTo("/admin/posts");
   } catch (err) {
     handleValidationErrors(err, node);
@@ -69,14 +69,31 @@ async function createPost(payload: PostPayload, node?: FormKitNode) {
         </NuxtLink>
       </div>
     </div>
-    <div v-if="!store.isLoading">
+    <div v-if="store.isLoading">
+      <div class="shadow rounded-md p-4 w-full">
+        <div class="animate-pulse flex space-x-4">
+          <div class="flex-1 space-y-6 py-1">
+            <div class="space-y-2">
+              <h1 class="h-10 w-full sm:w-1/2 bg-slate-200 rounded"></h1>
+              <h3 class="h-5 w-full sm:w-1/2 bg-slate-200 rounded"></h3>
+            </div>
+            <div class="space-y-3">
+              <p class="h-6 bg-slate-200 rounded"></p>
+              <p class="h-80 bg-slate-200 rounded"></p>
+              <p class="h-10 bg-slate-200 rounded"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div v-if="post">
       <FormKit
         type="form"
-        id="createPost"
-        data-testId="createPost"
+        id="editPost"
+        data-testId="editPost"
         :actions="false"
         #default="{ state: { valid } }"
-        @submit="createPost"
+        @submit="editPost"
       >
         <FormKit
           type="text"
@@ -84,6 +101,7 @@ async function createPost(payload: PostPayload, node?: FormKitNode) {
           name="title"
           id="title"
           data-testId="post-title"
+          :value="post.title"
           validation="required"
         />
         <div class="flex gap-2">
@@ -92,6 +110,7 @@ async function createPost(payload: PostPayload, node?: FormKitNode) {
             label="Slug"
             name="slug"
             id="slug"
+            :value="post.slug"
             data-testId="post-slug"
             validation="required"
           />
@@ -100,6 +119,7 @@ async function createPost(payload: PostPayload, node?: FormKitNode) {
             label="Category"
             name="category_id"
             id="category_id"
+            :value="post.category_id"
             data-testId="category_id"
             validation="required"
           >
@@ -109,11 +129,11 @@ async function createPost(payload: PostPayload, node?: FormKitNode) {
             </option>
           </FormKit>
         </div>
-
         <FormKit
           type="textarea"
           label="Description"
           name="description"
+          :value="post.description"
           data-testId="post-description"
           id="description"
           validation="required"
@@ -135,7 +155,6 @@ async function createPost(payload: PostPayload, node?: FormKitNode) {
               label="Featured Image"
               data-testId="post-image"
               accept=".jpg,.png,.jpeg"
-              validation="required"
               @change="postImagePreview"
             />
           </div>
@@ -145,18 +164,18 @@ async function createPost(payload: PostPayload, node?: FormKitNode) {
           label="Content"
           name="content"
           id="content"
+          :value="post.content"
           data-testId="post-content"
           validation="required"
         />
         <div class="flex gap-2 justify-end">
-          <div>
-            <FormKit type="button" data-testId="post-cancel" @click="clearForm">
-              Cancel
-            </FormKit>
-          </div>
+          <NuxtLink to="/admin/posts">
+            <FormKit type="button"> Cancel </FormKit>
+          </NuxtLink>
           <div>
             <FormKit
               type="submit"
+              label="Update"
               data-testId="post-submit"
               :disabled="!valid"
             />

@@ -161,7 +161,7 @@ describe("Category Store", () => {
 
     // Assertions
     expect(categoryStore.categories).toEqual([{ id: 2 }, { id: 3 }, { id: 1 }]);
-    expect(axios.put).toHaveBeenCalledWith("/categories/reorder", {
+    expect(axios.put).toHaveBeenCalledWith("/categories/reOrder", {
       moves: [
         { id: 2, order: 1 },
         { id: 3, order: 2 },

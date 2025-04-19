@@ -2,6 +2,11 @@
 import { usePostStore } from "@/stores/posts";
 // @ts-ignore
 import { TailwindPagination } from "laravel-vue-pagination";
+import {
+  PencilSquareIcon,
+  ArrowRightCircleIcon,
+  TrashIcon,
+} from "@heroicons/vue/24/outline";
 
 const store = usePostStore();
 
@@ -26,6 +31,15 @@ const handleCheckboxChange = (event: Event) => {
     store.selectedPosts = target.checked ? postData.map((post) => post.id) : [];
   }
 };
+
+async function deletePost(postId: number) {
+  try {
+    await store.deletePost(postId);
+    alert("Post Deleted Succesfully");
+  } catch (err) {
+    console.log("error");
+  }
+}
 </script>
 
 <template>
@@ -36,6 +50,7 @@ const handleCheckboxChange = (event: Event) => {
     >
       <button
         type="button"
+        @click="store.performAction('publish')"
         data-testId="publish-all"
         class="inline-flex items-center rounded bg-white px-2 py-1 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-white"
       >
@@ -43,6 +58,7 @@ const handleCheckboxChange = (event: Event) => {
       </button>
       <button
         type="button"
+        @click="store.performAction('delete')"
         data-testId="deletes-all"
         class="inline-flex items-center rounded bg-white px-2 py-1 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-white"
       >
@@ -85,9 +101,9 @@ const handleCheckboxChange = (event: Event) => {
           </th>
           <th
             scope="col"
-            class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+            class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 text-wrap"
           >
-            Content
+            Category
           </th>
 
           <th
@@ -123,21 +139,17 @@ const handleCheckboxChange = (event: Event) => {
           </td>
           <td
             :class="[
-              'whitespace-nowrap py-4 pr-3 text-sm font-medium',
+              'py-4 pr-3 text-sm font-medium',
               store.selectedPosts.includes(post.id)
                 ? 'text-indigo-600'
                 : 'text-gray-900',
             ]"
           >
             <div class="flex items-center">
-              <div class="h-11 w-11 flex-shrink-0">
-                <img
-                  class="h-11 w-11 rounded-full"
-                  src="http://localhost:8000/storage/images/category/fi8alXPXpkxiXGsAngXxGpDmqQJfj2RX30mWEphA.jpg"
-                  alt=""
-                />
+              <div class="h-10 w-10 flex-shrink-0">
+                <img class="h-10 w-10 rounded-full" :src="post.image" alt="" />
               </div>
-              <div class="ml-4">
+              <div class="ml-2">
                 <div class="font-medium text-gray-900">
                   {{ post.title }}
                 </div>
@@ -146,7 +158,7 @@ const handleCheckboxChange = (event: Event) => {
             </div>
           </td>
           <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-            {{ post.description }}
+            {{ post.category_name }}
           </td>
           <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
             <span
@@ -164,9 +176,23 @@ const handleCheckboxChange = (event: Event) => {
           <td
             class="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-3"
           >
-            <a href="#" class="text-indigo-600 hover:text-indigo-900">
-              Edit<span class="sr-only">, {{ post.title }}</span>
-            </a>
+            <div class="flex gap-3">
+              <NuxtLink :to="'/admin/posts/' + post.id + '/show'">
+                <ArrowRightCircleIcon
+                  class="h-6 w-6 text-gray-700"
+                  aria-hidden="true"
+                />
+              </NuxtLink>
+              <NuxtLink :to="'/admin/posts/' + post.id + '/edit'">
+                <PencilSquareIcon
+                  class="h-6 w-6 text-gray-700"
+                  aria-hidden="true"
+                />
+              </NuxtLink>
+              <a href="#" @click="deletePost(post.id)">
+                <TrashIcon class="h-6 w-6 text-gray-700" aria-hidden="true" />
+              </a>
+            </div>
           </td>
         </tr>
         <tr v-else class="text-center font-bold">

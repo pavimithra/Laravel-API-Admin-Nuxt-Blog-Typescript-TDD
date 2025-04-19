@@ -33,7 +33,7 @@ watch(searchData, debouncedSearch, { deep: true });
 
 <template>
   <div class="px-4">
-    <div class="sm:flex sm:items-center">
+    <div class="md:flex md:items-center">
       <div class="flex flex-grow">
         <NuxtLink to="/admin/posts/create">
           <button
@@ -44,7 +44,7 @@ watch(searchData, debouncedSearch, { deep: true });
           </button>
         </NuxtLink>
       </div>
-      <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex">
+      <div class="mt-2 md:ml-5 lg:ml-16 md:mt-0 md:flex">
         <input
           type="text"
           name="name"

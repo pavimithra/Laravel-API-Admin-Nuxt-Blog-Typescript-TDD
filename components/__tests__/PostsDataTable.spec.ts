@@ -1,3 +1,4 @@
+// @vitest-environment nuxt
 import { describe, test, expect } from "vitest";
 import { createTestingPinia } from "@pinia/testing";
 import { mount, flushPromises } from "@vue/test-utils";

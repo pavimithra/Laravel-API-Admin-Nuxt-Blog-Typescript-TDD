@@ -11,8 +11,8 @@ export default defineNuxtPlugin(async (nuxtApp) => {
   axios.defaults.withXSRFToken = true;
 
   axios.interceptors.response.use(
-    (res) => res,
-    (error) => {
+    (res: any) => res,
+    (error: any) => {
       if (
         [401, 419].includes(error.response.status) &&
         !error.request.responseURL.endsWith("/api/user")

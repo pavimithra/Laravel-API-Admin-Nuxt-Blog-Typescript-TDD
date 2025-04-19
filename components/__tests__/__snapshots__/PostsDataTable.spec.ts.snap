@@ -8,7 +8,7 @@ exports[`Posts DataTable Testing with Sample Data for 2 Pages > Displays Correct
       <tr>
         <th scope="col" class="relative px-7 sm:w-12 sm:px-6"><input type="checkbox" data-testid="checkbox-all" class="absolute left-4 top-1/2 -mt-2 h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-600"></th>
         <th scope="col" class="min-w-[12rem] py-3.5 pr-3 text-left text-sm font-semibold text-gray-900"> Title </th>
-        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"> Content </th>
+        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 text-wrap"> Category </th>
         <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"> Status </th>
         <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-3"><span class="sr-only">Edit</span></th>
       </tr>
@@ -18,52 +18,73 @@ exports[`Posts DataTable Testing with Sample Data for 2 Pages > Displays Correct
         <td class="relative px-7 sm:w-12 sm:px-6">
           <!--v-if--><input type="checkbox" data-testid="checkbox-1" class="absolute left-4 top-1/2 -mt-2 h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-600" value="1">
         </td>
-        <td class="whitespace-nowrap py-4 pr-3 text-sm font-medium text-gray-900">
+        <td class="py-4 pr-3 text-sm font-medium text-gray-900">
           <div class="flex items-center">
-            <div class="h-11 w-11 flex-shrink-0"><img class="h-11 w-11 rounded-full" src="http://localhost:8000/storage/images/category/fi8alXPXpkxiXGsAngXxGpDmqQJfj2RX30mWEphA.jpg" alt=""></div>
-            <div class="ml-4">
+            <div class="h-10 w-10 flex-shrink-0"><img class="h-10 w-10 rounded-full" src="image1.png" alt=""></div>
+            <div class="ml-2">
               <div class="font-medium text-gray-900">Post 1</div>
               <div class="mt-1 text-gray-500">post-1</div>
             </div>
           </div>
         </td>
-        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Post Description 1</td>
+        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"></td>
         <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500"><span class="inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset bg-yellow-50 text-yellow-700 ring-yellow-600/20">draft</span></td>
-        <td class="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-3"><a href="#" class="text-indigo-600 hover:text-indigo-900"> Edit<span class="sr-only">, Post 1</span></a></td>
+        <td class="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-3">
+          <div class="flex gap-3">
+            <routerlink to="/admin/posts/1/show"></routerlink>
+            <routerlink to="/admin/posts/1/edit"></routerlink><a href="#"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-6 w-6 text-gray-700">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"></path>
+              </svg></a>
+          </div>
+        </td>
       </tr>
       <tr class="">
         <td class="relative px-7 sm:w-12 sm:px-6">
           <!--v-if--><input type="checkbox" data-testid="checkbox-2" class="absolute left-4 top-1/2 -mt-2 h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-600" value="2">
         </td>
-        <td class="whitespace-nowrap py-4 pr-3 text-sm font-medium text-gray-900">
+        <td class="py-4 pr-3 text-sm font-medium text-gray-900">
           <div class="flex items-center">
-            <div class="h-11 w-11 flex-shrink-0"><img class="h-11 w-11 rounded-full" src="http://localhost:8000/storage/images/category/fi8alXPXpkxiXGsAngXxGpDmqQJfj2RX30mWEphA.jpg" alt=""></div>
-            <div class="ml-4">
+            <div class="h-10 w-10 flex-shrink-0"><img class="h-10 w-10 rounded-full" src="image2.png" alt=""></div>
+            <div class="ml-2">
               <div class="font-medium text-gray-900">Post 2</div>
               <div class="mt-1 text-gray-500">post-2</div>
             </div>
           </div>
         </td>
-        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Post Description 2</td>
+        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"></td>
         <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500"><span class="inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset bg-yellow-50 text-yellow-700 ring-yellow-600/20">draft</span></td>
-        <td class="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-3"><a href="#" class="text-indigo-600 hover:text-indigo-900"> Edit<span class="sr-only">, Post 2</span></a></td>
+        <td class="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-3">
+          <div class="flex gap-3">
+            <routerlink to="/admin/posts/2/show"></routerlink>
+            <routerlink to="/admin/posts/2/edit"></routerlink><a href="#"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-6 w-6 text-gray-700">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"></path>
+              </svg></a>
+          </div>
+        </td>
       </tr>
       <tr class="">
         <td class="relative px-7 sm:w-12 sm:px-6">
           <!--v-if--><input type="checkbox" data-testid="checkbox-3" class="absolute left-4 top-1/2 -mt-2 h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-600" value="3">
         </td>
-        <td class="whitespace-nowrap py-4 pr-3 text-sm font-medium text-gray-900">
+        <td class="py-4 pr-3 text-sm font-medium text-gray-900">
           <div class="flex items-center">
-            <div class="h-11 w-11 flex-shrink-0"><img class="h-11 w-11 rounded-full" src="http://localhost:8000/storage/images/category/fi8alXPXpkxiXGsAngXxGpDmqQJfj2RX30mWEphA.jpg" alt=""></div>
-            <div class="ml-4">
+            <div class="h-10 w-10 flex-shrink-0"><img class="h-10 w-10 rounded-full" src="image3.png" alt=""></div>
+            <div class="ml-2">
               <div class="font-medium text-gray-900">Post 3</div>
               <div class="mt-1 text-gray-500">post-3</div>
             </div>
           </div>
         </td>
-        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Post Description 3</td>
+        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"></td>
         <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500"><span class="inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset bg-yellow-50 text-yellow-700 ring-yellow-600/20">draft</span></td>
-        <td class="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-3"><a href="#" class="text-indigo-600 hover:text-indigo-900"> Edit<span class="sr-only">, Post 3</span></a></td>
+        <td class="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-3">
+          <div class="flex gap-3">
+            <routerlink to="/admin/posts/3/show"></routerlink>
+            <routerlink to="/admin/posts/3/edit"></routerlink><a href="#"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-6 w-6 text-gray-700">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"></path>
+              </svg></a>
+          </div>
+        </td>
       </tr>
       <!--v-if-->
       <tr class="text-center font-bold">

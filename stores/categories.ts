@@ -117,7 +117,7 @@ export const useCategoryStore = defineStore("category", () => {
       }
     }
 
-    axios.put(`/categories/reorder`, { moves: categoryMoves });
+    axios.put(`/categories/reOrder`, { moves: categoryMoves });
   }
 
   return {
